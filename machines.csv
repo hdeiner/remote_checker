@@ -1,4 +1,18 @@
 machine,username,password,application_signature,port
-ec2-54-237-50-195.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8200 -container-ip 172.18.0.2,8200
-ec2-34-239-107-33.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3306 -container-ip 172.18.0.2,3306
 ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+ec2-52-205-75-84.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8080 -container-ip 172.18.0.2,8080
+
+
+ec2-54-237-50-195.compute-1.amazonaws.com,ubuntu,,/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8200 -container-ip 172.18.0.2,8200
+
+
+ec2-34-239-107-33.compute-1.amazonaws.com,ubuntu,,mysqld --default-authentication-plugin=mysql_native_password,3306
