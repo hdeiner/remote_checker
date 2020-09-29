@@ -20,7 +20,7 @@ This executes remote_checker and outputs some diagnostics.
 ```bash
 #!/bin/bash
 
-if python3 main.py
+if python3 remote_checker.py
 then
 echo "AWSQA environment is good"
 else
