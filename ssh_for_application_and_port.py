@@ -4,8 +4,9 @@ import exitstatus
 
 def ssh_for_application_and_port(machine, username, password, application_signature, port):
     retryCount = 0
+    finishedSession = False
 
-    while retryCount < 5:
+    while ((not finishedSession) and (retryCount < 5)):
         try:
             #                key = paramiko.RSAKey.from_private_key_file(os.path.expanduser("~/.ssh/id_rsa"))
             client = paramiko.SSHClient()
@@ -46,6 +47,7 @@ def ssh_for_application_and_port(machine, username, password, application_signat
             stderr.close()
             client.close()
             del client
+            finishedSession = True
 
         except paramiko.AuthenticationException as authenticationFailure:
             print("Authentication failed: %s" % authenticationFailure)
@@ -57,12 +59,12 @@ def ssh_for_application_and_port(machine, username, password, application_signat
             print("Unable to verify server's host key: %s" % badHostKeyException)
             return exitstatus.ExitStatus.failure
         except Exception as exception:
+            print("Exception: %s" % exception)
             if (retryCount < 5):
-                ++retryCount
+                retryCount = retryCount + 1
                 print("retry...")
-                break
+                continue
             else:
-                print("Exception: %s" % exception)
                 return exitstatus.ExitStatus.failure
         finally:
             time.sleep(1)

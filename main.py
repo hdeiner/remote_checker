@@ -36,6 +36,7 @@ def main():
             application_signature=row['application_signature']
             port=row['port']
             success = success and (ssh_for_application_and_port(machine,username, password, application_signature, port) == exitstatus.ExitStatus.success)
+            print()
 
     if success:
         sys.exit(exitstatus.ExitStatus.success)
