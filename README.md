@@ -12,7 +12,7 @@ For this project, we have three machines running on platforms that we can ssh in
 For this project, we will use Python to build our tool.
 
 ##### Usage
-```bash
+```console
 ./checkAWSQA.sh
 ```
 This executes remote_checker and outputs some diagnostics.  
@@ -29,7 +29,7 @@ fi
 ```
 This minimal bash script shows how the exit code from main.py integrates with bash for powerful tools that we can compose in bash or some other execution environment.
 
-```bash
+```console
 connecting to ec2-100-25-134-180.compute-1.amazonaws.com
 executed ps -ef and looking for vault server -config=/vault/config -dev-root-token-id= -dev-listen-address=0.0.0.0:8200
 executed sudo lsof -i -P -n | grep LISTEN and looking for 8200
@@ -48,7 +48,7 @@ executed sudo lsof -i -P -n | grep LISTEN and looking for 8080
 AWSQA environment is good
 ```
 And if something went wrong, such as an 8081 substituted for the 8080 at the end of line 3 in the machines.csv, we get
-```bash
+```console
 connecting to ec2-100-25-134-180.compute-1.amazonaws.com
 executed ps -ef and looking for vault server -config=/vault/config -dev-root-token-id= -dev-listen-address=0.0.0.0:8200
 executed sudo lsof -i -P -n | grep LISTEN and looking for 8200
