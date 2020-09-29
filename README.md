@@ -13,28 +13,59 @@ For this project, we will use Python to build our tool.
 
 ##### Usage
 ```bash
-python3 main.py ; echo $?
+./checkAWSQA.sh
 ```
-This executes remote_checker and outputs some diagnostics.  The echo $? shows us what the system exit code was, which you normally don't see in bash processing.
+This executes remote_checker and outputs some diagnostics.  
 
 ```bash
-connecting to ec2-54-237-50-195.compute-1.amazonaws.com
+#!/bin/bash
+
+if python3 main.py
+then
+echo "AWSQA environment is good"
+else
+echo "AWSQA environment is NOT good"
+fi
+```
+This minimal bash script shows how the exit code from main.py integrates with bash for powerful tools that we can compose in bash or some other execution environment.
+
+```bash
+connecting to ec2-100-25-134-180.compute-1.amazonaws.com
 executed ps -ef and looking for vault server -config=/vault/config -dev-root-token-id= -dev-listen-address=0.0.0.0:8200
 executed sudo lsof -i -P -n | grep LISTEN and looking for 8200
 
-connecting to ec2-34-239-107-33.compute-1.amazonaws.com
+connecting to ec2-100-25-22-192.compute-1.amazonaws.com
 executed ps -ef and looking for mysqld --default-authentication-plugin=mysql_native_password
 executed sudo lsof -i -P -n | grep LISTEN and looking for 3306
 
-connecting to ec2-52-205-75-84.compute-1.amazonaws.com
-Exception: [Errno None] Unable to connect to port 22 on 52.205.75.84
+connecting to ec2-54-144-140-173.compute-1.amazonaws.com
+Exception: [Errno None] Unable to connect to port 22 on 54.144.140.173
 retry...
-connecting to ec2-52-205-75-84.compute-1.amazonaws.com
+connecting to ec2-54-144-140-173.compute-1.amazonaws.com
 executed ps -ef and looking for /bin/sh -c java -jar zipster-1.0-SNAPSHOT.jar
 executed sudo lsof -i -P -n | grep LISTEN and looking for 8080
 
-0
+AWSQA environment is good
 ```
-This execution shows a zero exit code for the conditions at the time of execution.  
+And if something went wrong, such as an 8081 substituted for the 8080 at the end of line 3 in the machines.csv, we get
+```bash
+connecting to ec2-100-25-134-180.compute-1.amazonaws.com
+executed ps -ef and looking for vault server -config=/vault/config -dev-root-token-id= -dev-listen-address=0.0.0.0:8200
+executed sudo lsof -i -P -n | grep LISTEN and looking for 8200
+
+connecting to ec2-100-25-22-192.compute-1.amazonaws.com
+executed ps -ef and looking for mysqld --default-authentication-plugin=mysql_native_password
+executed sudo lsof -i -P -n | grep LISTEN and looking for 3306
+
+connecting to ec2-54-144-140-173.compute-1.amazonaws.com
+Exception: [Errno None] Unable to connect to port 22 on 54.144.140.173
+retry...
+connecting to ec2-54-144-140-173.compute-1.amazonaws.com
+executed ps -ef and looking for /bin/sh -c java -jar zipster-1.0-SNAPSHOT.jar
+executed sudo lsof -i -P -n | grep LISTEN and looking for 8081
+did not find port
+
+AWSQA environment is NOT good
+```
 
 The program uses the paramiko package, which appears to have a problem when repeated used, and the ssh_for_application_and_port.py was enhanced to retry the operations when a such a generalized exception as "Exception: [Errno None] Unable to connect to port 22 on 52.205.75.84" was encountered.
