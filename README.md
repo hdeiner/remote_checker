@@ -1,7 +1,7 @@
 ### Building Our Own DevOps Tools.
 
 ##### Concept
-DevOps calls for creative thinking about how to use the tools in front of use to solve problems.  Too many teams don't have the tools that they need, and/or are forced to use (sometimes) expensive tools to do their jobs.
+DevOps calls for creative thinking about how to use the tools in front of us to solve problems.  Too many teams don't have the tools that they need, and/or are forced to use (sometimes) expensive tools to do their jobs.
 
 For this project, we have three machines running on platforms that we can ssh into.  Each machine will be tested to see if it's function in the environment is "running" by
 <ul>
