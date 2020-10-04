@@ -1,0 +1,4 @@
+machine,username,password,application_signature,port
+localhost,howarddeiner,password,vault server -config=/vault/config -dev-root-token-id= -dev-listen-address=0.0.0.0:8200,8200
+localhost,howarddeiner,password,mysqld --default-authentication-plugin=mysql_native_password,3306
+localhost,howarddeiner,password,/bin/sh -c java -jar zipster-1.0-SNAPSHOT.jar,8080

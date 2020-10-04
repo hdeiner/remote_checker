@@ -17,7 +17,7 @@ def get_args():
                         help='CSV file for machines, userids, passwords, ps entry, port',
                         metavar='FILE',
                         type=argparse.FileType('rt'),
-                        default='machines.csv')
+                        default='localhost.csv')
 
     args = parser.parse_args()
 

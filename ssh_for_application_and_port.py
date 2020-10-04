@@ -1,6 +1,7 @@
 import paramiko
 import time
 import exitstatus
+import re
 
 def ssh_for_application_and_port(machine, username, password, application_signature, port):
     retryCount = 0
@@ -30,15 +31,20 @@ def ssh_for_application_and_port(machine, username, password, application_signat
                 print("did not find application signature")
                 return exitstatus.ExitStatus.failure
 
-            stdin, stdout, stderr = client.exec_command('sudo lsof -i -P -n | grep LISTEN')
-            print("executed sudo lsof -i -P -n | grep LISTEN and looking for " + port)
+            stdin, stdout, stderr = client.exec_command('bash -c "echo ' + password + ' | sudo -S lsof -i -P -n"')
+            print("executed bash -c echo " + password + " | sudo -S lsof -i -P -n and looking for " + port)
 
             err = stderr.read().decode()
             if err:
                 print("stderr")
                 print(err)
 
-            if not port in stdout.read().decode():
+            foundPort = False
+            for line in stdout:
+                if (re.search(r'TCP\s\*\:' + port + r'\s\(LISTEN\)',line)):
+                    foundPort = True
+
+            if not foundPort:
                 print("did not find port")
                 return exitstatus.ExitStatus.failure
 
