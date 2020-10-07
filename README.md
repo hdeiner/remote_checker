@@ -11,6 +11,19 @@ For this project, we have three machines running on platforms that we can ssh in
 
 For this project, we will use Python to build our tool.
 
+#### Installation
+Make sure that Python is installed and usable from the command line.
+
+This project was developed under Python 3.6.9.  You can check with
+```bash
+python --version
+```
+
+Once the project files have been put in place (git clone is your friend here), install all the PyPi dependencies by
+```bash
+python -m pip install -r requirements.txt
+```
+
 ##### Usage
 ```console
 ./checkAWSQA.sh
